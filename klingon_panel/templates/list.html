@@ -1,89 +1,70 @@
-<!DOCTYPE html>
-{% load static %}
-<html>
-<head>
-	<meta charset="utf-8">     
-	<title>RouteAtlas Klingon Panel</title>
-	<meta name="description" content="Descubre la mejor manera de llegar">
-	<meta name="author" content="RouteAtlas">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{% extends "base.html" %}
 
-	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" /> <!-- CSS -->
-    <link rel="stylesheet" href="{% static "css/style.css" %}" /> <!-- CSS -->
-    <!--<script src="{% static "js/jquery.js" %}"></script> --> <!-- JavaScript -->
-    <!--
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-    -->
+{% block title %}RouteAtlas Klingon Panel{% endblock %}
 
-	
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-</head>
-<body>
-    <div class="container">
+{% block content %}
+   <div class="page-header">            
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Klingon Panel</h1>
+                <p class="lead">Translation panel.</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-right"> Language: 
+                <select class="" id="lang">
+                    <option value="es"> Spanish </option>
+                    <option value="pt"}> Portuguese </option>
+                </select>
+                </p>
+            </div>
+        </div>            
+    </div>
 
-       <div class="page-header">            
-            <div class="row">
-                <div class="col-md-8">
-                    <h1>Klingon Panel</h1>
-                    <p class="lead">Translation panel.</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-right"> Language: 
-                    <select class="" id="lang">
-                        <option value="es"> Spanish </option>
-                        <option value="pt"}> Portuguese </option>
-                    </select>
-                    </p>
-                </div>
-            </div>            
-        </div>
+    <ul class="breadcrumb">
+        <li><a href="/{{lang}}">Translation</a><span class="divider"></span></li>
+        <li class="active">...</li>
+    </ul>
 
-        <ul class="breadcrumb">
-            <li><a href="/{{lang}}">Traslation</a><span class="divider"></span></li>
-            <li class="active">...</li>
+    <div class="row" id="list">
+        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+            <li class="active"><a href="#unfinished" data-toggle="tab">Pendientes</a></li>
+            <li><a href="#finished" data-toggle="tab">Hechos</a></li>
         </ul>
-
-        <div class="row" id="list">
-            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                <li class="active"><a href="#unfinished" data-toggle="tab">Pendientes</a></li>
-                <li><a href="#finished" data-toggle="tab">Hechos</a></li>
-            </ul>
-            <div id="my-tab-content" class="tab-content">
-                <div class="tab-pane active" id="unfinished">
-                    <ol class="">
-                        <li><div class="" style="display:inline">Hello world</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="1">Traslate</button></div></li>
-                        <li><div class="" style="display:inline">Travelling</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="2">Traslate</button></div></li>                    
-                    </ol>
-                </div>
-                <div class="tab-pane" id="finished">
-                    <ol class="">
-                        <li><div class="" style="display:inline">Business</div> <span class="glyphicon glyphicon-chevron-right"></span> <div class="" style="display:inline">Negocios</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="3">Edit</button></div></li>
-                        <li><div class="" style="display:inline">Cat</div> <span class="glyphicon glyphicon-chevron-right"></span> <div class="" style="display:inline">Gato</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="4">Edit</button></div></li>                      
-                    </ol>
-                </div>          
+        <div id="my-tab-content" class="tab-content">
+            <div class="tab-pane active" id="unfinished">
+                <ol class="">
+                    <!--
+                    <li><div class="" style="display:inline">Hello world</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="1">Traslate</button></div></li>
+                    <li><div class="" style="display:inline">Travelling</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="2">Traslate</button></div></li>                
+                    -->
+                </ol>
             </div>
+            <div class="tab-pane" id="finished">
+                <ol class="">
+                    <!--
+                    <li><div class="" style="display:inline">Business</div> <span class="glyphicon glyphicon-chevron-right"></span> <div class="" style="display:inline">Negocios</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="3">Edit</button></div></li>
+                    <li><div class="" style="display:inline">Cat</div> <span class="glyphicon glyphicon-chevron-right"></span> <div class="" style="display:inline">Gato</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="4">Edit</button></div></li>                      
+                    -->
+                </ol>
+            </div>          
         </div>
-    
-        <div class="hide" id="translate_div">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="hidden" id="translation_id" />
-                        <textarea id="first_textarea" disabled style="width:100%" rows="5"></textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <textarea id="second_textarea" style="width:100%" rows="5" placeholder="Translate here..."></textarea>
-                    </div>
-                </div>
-                <p class="text-right"><button class="btn btn-primary" id="save_btn">Save</button></p>
-            </div>
-        </div>
-    </div> <!-- /container -->
+    </div>
 
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-  </body>
-</html>
+    <div class="hide" id="translate_div">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="hidden" id="translation_id" />
+                    <textarea id="first_textarea" disabled style="width:100%" rows="5"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <textarea id="second_textarea" style="width:100%" rows="5" placeholder="Translate here..."></textarea>
+                </div>
+            </div>
+            <p class="text-right"><button class="btn btn-primary" id="save_btn">Save</button></p>
+        </div>
+    </div>
+
 <script type="text/javascript">
 jQuery(document).ready(function ($) {
     
@@ -96,30 +77,7 @@ jQuery(document).ready(function ($) {
         e.stopPropagation(); 
     });  
   
-  
-    $('.translate_btn').on('click', function (e) {
-               
-        $('#translate_div').removeClass('hide');
-        
-        var id = $(this).val();    
-        $('#translation_id').val(id);
-        console.log('[translation_id:'+ $('#translation_id').val() +']');    
-        
-        var first_text = $(this).parents('li').find("div").html();
-        $('#first_textarea').html(first_text);   
-        
-        var active_div = $(this).parents('div').parents('div').attr('id');
-        
-        if(active_div == 'finished') {
-            var second_text = $(this).parents("li").find("div:eq(1)").html(); 
-            $('#second_textarea').html(second_text);           
-        }        
-          
-        e.preventDefault();
-        e.stopPropagation();    
-    });
-    
-    
+
     $('#save_btn').on('click', function (e) {
         $('#translate_div').addClass('hide');
         
@@ -139,17 +97,15 @@ jQuery(document).ready(function ($) {
         e.stopPropagation();  
     });
     
-    
-    
-    
+       
     // default language
     var lang = 'es';
         
-    
+    // get lang from url
     var param = window.location.pathname.split("/")[1];
     console.log(param);
         
-    // Get section name from url
+    // get section name from url
     var section = window.location.pathname.split("/")[2];
     console.log(section)    
         
@@ -159,18 +115,14 @@ jQuery(document).ready(function ($) {
     $('#lang').val(lang);
   
     $('#lang').on('change', function(e) {
-
-        var lang = $('#lang').val()
-        
-        location.href='/'+lang+'/'+section;                
-        
+        var lang = $('#lang').val()        
+        location.href='/'+lang+'/'+section;                        
         e.preventDefault();
         e.stopPropagation();
     });
     
     
-    
-    // Section uppercase
+    // section uppercase
     var section_name = section.charAt(0).toUpperCase() + section.substring(1);
     $('.breadcrumb .active').text(section_name);
 
@@ -184,10 +136,31 @@ jQuery(document).ready(function ($) {
     }                
 });
 
-function getData(section) {    
-    console.log('[getData][section:'+section+']');
+// Edit/Translate button handler
+var handler = function() {
+
+    $('#translate_div').removeClass('hide');
     
-    // call API to get the translation data separated by status
+    var id = $(this).val();    
+    $('#translation_id').val(id);
+    console.log('[translation_id:'+ $('#translation_id').val() +']');    
+    
+    var first_text = $(this).parents('li').find("div").html();
+    $('#first_textarea').html(first_text);   
+    
+    var active_div = $(this).parents('div').parents('div').attr('id');
+    
+    if(active_div == 'finished') {
+        var second_text = $(this).parents("li").find("div:eq(1)").html(); 
+        $('#second_textarea').html(second_text);           
+    }                  
+};
+    
+    
+// Call API to get the translation data separated by status
+function getData(section) {    
+    console.log('[getData][section:'+section+']');    
+    
     var url = 'http://localhost:3001/?p='+section;
     
     $.ajax({
@@ -202,37 +175,41 @@ function getData(section) {
             } else {
                 
                 if(response.data.finished) {
-                    // Finished data loop
+                    // finished data loop
                     $.each(response.data.finished, function(key) {
                         var translation_id = response.data.finished[key].id;
                         var text = response.data.finished[key].text;
                         var translation = response.data.finished[key].translation;
                         
-                        $('#finished > ol').add('<li><div class="" style="display:inline">'+text+'</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="'+translation_id+'">Traslate</button></div></li>');
+                        $('#finished > ol').append('<li><div class="" style="display:inline">'+text+'</div> <span class="glyphicon glyphicon-chevron-right"></span> <div class="" style="display:inline">'+translation+'</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="'+translation_id+'">Edit</button></div></li>');
                         console.log('[getStats][finished][translation_id:'+translation_id+'][text:'+text+'][translation:'+translation+']');
                     });        
                 }
                 
                 if(response.data.unfinished) {
-                    // Uninished data loop
+                    // unfinished data loop
                     $.each(response.data.unfinished, function(key) {
                         var translation_id = response.data.unfinished[key].id;
                         var text = response.data.unfinished[key].text;
-                        var translation = response.data.unfinished[key].translation;
+                        //var translation = response.data.unfinished[key].translation;
                         
-                        
-                        console.log('[getStats][unfinished][translation_id:'+translation_id+'][text:'+text+'][translation:'+translation+']');
+                        $('#unfinished > ol').append('<li><div class="" style="display:inline">'+text+'</div> <div class="" style="display:inline"><button class="translate_btn btn btn-primary" value="'+translation_id+'">Traslate</button></div></li>');
+                        console.log('[getStats][unfinished][translation_id:'+translation_id+'][text:'+text+']');
                     });        
                 }
-
+                
+                // bind handler to buttons
+                $(".translate_btn" ).bind( "click", handler );
             }
         }
     });    
 }
 
+
+// Save data into API
 function saveData(id, translation) {
     console.log('[saveData][translation_id:'+id+'][translation:'+translation+']');
-    // save data into API
     
 }
 </script>    
+{% endblock %}  
